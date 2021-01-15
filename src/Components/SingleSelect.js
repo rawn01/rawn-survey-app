@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router";
 
 import { surveySlice } from '../store/surverySlice';

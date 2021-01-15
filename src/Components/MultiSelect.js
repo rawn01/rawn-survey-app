@@ -1,10 +1,18 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useParams, useHistory } from "react-router";
 import { Button, InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
+
+import { surveySlice } from '../store/surverySlice';
 
 function MultiSelect() {
     const [question, setQuestion] = useState("");
     const [options, setOptions] = useState([""]);
+
+    const { surveyId } = useParams();
+    const history = useHistory();
+
+    const dispatch = useDispatch(); 
 
     const handleQuestionChange = (e) => {
         setQuestion(e.target.value);
@@ -41,6 +49,18 @@ function MultiSelect() {
         return false;
     }
 
+    const addQuestion = () => {
+        const payload = {
+            options: options,
+            surveyId: surveyId,
+            type: "multi-select",
+            question: question
+        };
+
+        dispatch(surveySlice.actions.addQuestion(payload));
+        history.push("/create/" + surveyId + "?clear=true");
+    };
+
     return (
         <div className="question-container">
             <InputGroup className="input-group">
@@ -66,7 +86,7 @@ function MultiSelect() {
             { 
                 options.length === 4 ? (
                     <div className="finish-buttons">
-                        <Button className="btn left" disabled={disableButtons()}>Add Question</Button>
+                        <Button className="btn left" disabled={disableButtons()} onClick={addQuestion}>Add Question</Button>
                         <Button className="btn left" disabled={disableButtons()}>Publish</Button>
                     </div>
                 ) : undefined
