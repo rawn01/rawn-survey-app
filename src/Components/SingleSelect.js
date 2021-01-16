@@ -50,7 +50,19 @@ function SingleSelect() {
         }
 
         return false;
-    }
+    };
+
+    const publishQuestion = () => {
+        const payload = {
+            surveyId: surveyId,
+            question: question,
+            options: options,
+            type: "single-select"
+        };
+
+        dispatch(surveySlice.actions.publishQuestion(payload));
+        history.push(surveyId + "/confirm");
+    };
 
     return (
         <div className="question-container">
@@ -79,7 +91,7 @@ function SingleSelect() {
             <br />
             <div className="finish-buttons">
                 <Button className="btn left" disabled={disableButtons()} onClick={addQuestion}>Add Question</Button>
-                <Button className="btn left" disabled={disableButtons()}>Publish</Button>
+                <Button className="btn left" disabled={disableButtons()} onClick={publishQuestion}>Publish</Button>
             </div>
         </div>
     );

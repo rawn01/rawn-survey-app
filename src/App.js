@@ -6,7 +6,8 @@ import { unwrapResult } from "@reduxjs/toolkit";
 
 import CreateSurvey from "./Components/CreateSurvey";
 import TakeSurvey from "./Components/TakeSurvey";
-import { surveySlice, createSurvey } from "./store/surverySlice";
+import ConfirmSurvey from "./Components/ConfirmSurvey";
+import { createSurvey } from "./store/surverySlice";
 
 import './App.css';
 
@@ -27,8 +28,9 @@ function App() {
   return (
       <div className="App">
         <Switch>
-          <Route path="/create/:surveyId" component={CreateSurvey} />
+          <Route path="/create/:surveyId" component={CreateSurvey} exact={true} />
           <Route path="/take" component={TakeSurvey}/>
+          <Route path="/create/:surveyId/confirm" component={ConfirmSurvey}/>
 
           <Route path="/">
             <Button className="btn" onClick={redirectToNewSurvery}>Create Survey</Button>

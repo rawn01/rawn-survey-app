@@ -46,3 +46,56 @@
 .App .left {
   margin-left: 5px;
 }
+
+.confirm-survey {
+  width: 400px;
+  margin-top: 40px;
+}
+
+.confirm-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.confirm-single {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  font-size: 80%;
+}
+
+.confirm-single input {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.confirm-single-left {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-right: 50px;
+}
+
+.confirm-single-right {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.confirm-text {
+  font-size: 70%;
+}
+
+.confirm-multi {
+  font-size: 80%;
+}
+
+.confirm-multi input {
+  margin-right: 10px;
+}
+
+.confirm-button {
+  float: right;
+  width: 100px !important;
+  height: 40px !important;
+}

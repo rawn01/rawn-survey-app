@@ -17,13 +17,31 @@ const surveySlice = createSlice({
             const survey = state.find(s => s.surveyId == surveyId);
             const ques = survey.questions;
             const questionId = String(ques.length + 1);
-            
+
             ques.push({
                 questionId: questionId,
                 question: question,
                 type: type,
                 options: options
             });
+        },
+        publishQuestion: (state, action) => {
+            const { surveyId, question, options, type } = action.payload;
+            const survey = state.find((s) => s.surveyId == surveyId);
+            const ques = survey.questions;
+            const quesId = String(ques.length + 1);
+
+            ques.push({
+                questionId: quesId,
+                question: question,
+                type: type,
+                options: options
+            });
+        },
+        markPublished: (state, action) => {
+            const { surveyId } = action.payload;
+            const survey = state.find((s) => s.surveyId == surveyId);
+            survey.isPublished = true;
         } 
     },
     extraReducers: {

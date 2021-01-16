@@ -61,6 +61,18 @@ function MultiSelect() {
         history.push("/create/" + surveyId + "?clear=true");
     };
 
+    const publishQuestion = () => {
+        const payload = {
+            surveyId: surveyId,
+            question: question,
+            options: options,
+            type: "multi-select"
+        };
+
+        dispatch(surveySlice.actions.publishQuestion(payload));
+        history.push(surveyId + "/confirm");
+    };
+
     return (
         <div className="question-container">
             <InputGroup className="input-group">
@@ -87,7 +99,7 @@ function MultiSelect() {
                 options.length === 4 ? (
                     <div className="finish-buttons">
                         <Button className="btn left" disabled={disableButtons()} onClick={addQuestion}>Add Question</Button>
-                        <Button className="btn left" disabled={disableButtons()}>Publish</Button>
+                        <Button className="btn left" disabled={disableButtons()} onClick={publishQuestion}>Publish</Button>
                     </div>
                 ) : undefined
             }

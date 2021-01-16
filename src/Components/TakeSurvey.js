@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Button } from 'reactstrap';
 import { useSelector } from "react-redux";
 
 function TakeSurvey() {
-    const selector = useSelector((store) => store.surveys.map(s => s.surveyId));
+    const selector = useSelector((store) => store.surveys.filter(s => s.isPublished)).map((s) => s.surveyId);
+    console.log(selector);
     
     return ( 
         <>
